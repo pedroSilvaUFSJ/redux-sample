@@ -5,14 +5,13 @@ import { fetchUsers } from '../redux'
 const UserContainer = ({ userData, fetchUsers }) => {
     useEffect(() => {
         fetchUsers()
-    }, [])
-    return userData.loading ? (
-        <h2>LOADING</h2>
-    ) : userData.error ? (
-        <h2>{userData.error}</h2>
-    ) : (
-        userData?.users?.map(user => <p>{user.name}</p>)
-    )
+    }, [fetchUsers])
+
+    return userData.loading
+        ? (<h2>LOADING</h2>)
+        : userData.error
+            ? (<h2>{userData.error}</h2>)
+            : (userData?.users?.map(user => <p>{user.name}</p>))
 }
 
 const mapStateToProps = state => {

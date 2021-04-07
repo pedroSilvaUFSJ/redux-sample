@@ -7,7 +7,6 @@ export const fetchUsersRequest = () => {
     }
 }
 
-
 export const fetchUsersSuccess = (users) => {
     return {
         type: FETCH_USERS_SUCCESS,
@@ -24,7 +23,7 @@ export const fetchUsersFailure = (error) => {
 
 export const fetchUsers = () => {
     return (dispatch) => {
-        dispatch(fetchUsersResquest)
+        dispatch(fetchUsersRequest)
         axios.get('http://jsonplaceholder.typicode.com/users')
             .then(response => {
                 const users = response.data
